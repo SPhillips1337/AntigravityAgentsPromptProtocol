@@ -1,1 +1,0 @@
-Here is the complete, unified master prompt. You can copy this entire block and paste it directly into your .antigravity/rules/system-prompt.md or the IDE's main system instruction configuration.
