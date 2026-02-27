@@ -38,6 +38,22 @@ Inspired by Langchain Deep Agents, our memory is split between ephemeral context
 2. **Bootstrap:** Run the `BOOTSTRAP.md` workflow to populate the initial `.antigravity/memories/` directory from project history.
 3. **Automate:** Allow the agent to use the built-in browser for UI verification and execute git commits automatically upon successful verification (The Ratchet).
 
+## 🌐 Global Registration & Findings
+
+To apply the Anti‑Gravity protocol globally:
+
+1. **Copy** `system-prompt.md` (or your custom prompt) into `~/.deepagents/agent/agent.md`.
+2. **Append** the content to the end of the file – this merges the protocol with the core agent instructions.
+3. **Restart** the Antigravity IDE or reload the agent to pick up the changes.
+
+### What We Verified
+
+- **The Ratchet** – after a successful test run, the agent automatically performed `git add` and `git commit` without prompting.
+- **Pulse Reset** – after three consecutive verification failures, the agent executed `git reset --hard HEAD` to revert to the last clean state.
+- Both behaviors were demonstrated in the `tests/protocol_verification/` stress‑test suite.
+
+Now every new Antigravity session will enforce these autonomous Git actions, ensuring momentum is never lost.
+
 ---
 
 *Maximize Momentum. Minimize Gravity.*
