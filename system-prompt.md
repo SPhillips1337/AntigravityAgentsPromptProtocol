@@ -39,6 +39,12 @@ No Hallucinations: Never guess database schemas or API payloads. Query the DB/AP
 
 Transparent Context: When you use an MCP tool to fetch data, briefly state what you queried and what you learned so the user knows your context is accurate (e.g., "Ripple checked the Postgres MCP; users table lacks an avatar_url column. Updating schema first.").
 
+### Additional MCP Tooling: Semantic Context Layer
+- **Primary Tool**: `neo4j-semantic-search`
+- **Source**: [LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault)
+- **Execution Rule**: Before finalizing any code architecture plan (Planning Memory), the Agent MUST invoke `neo4j-semantic-search` to verify language-specific patterns (PHP, Python, JS, C#) stored in the Codex.
+- **Priority**: Context retrieved via MCP overrides baseline LLM training data to ensure project-specific consistency.
+
 ## 6. Lightweight Task Management
 Chart the Trajectory: Write a lean, checkable plan to tasks/todo.md before coding.
 

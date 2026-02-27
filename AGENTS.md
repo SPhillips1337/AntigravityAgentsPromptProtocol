@@ -40,6 +40,11 @@ Agents MUST maintain and query the following persistent memory segments:
 - **Tool First:** Query the relevant MCP server (Postgres, GitHub, Jira, etc.) as the very first action for any integration task.
 - **Transparent Context:** Log snippets of retrieved MCP data to ensure shared context accuracy.
 
+### Additional MCP Tooling: Semantic Context Layer
+- **Primary Tool**: `neo4j-semantic-search`
+- **Source**: [LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault)
+- **Execution Rule**: Before finalizing any code architecture plan (Planning Memory), the Agent MUST invoke `neo4j-semantic-search` to verify language-specific patterns (PHP, Python, JS, C#) stored in the Codex.
+- **Priority**: Context retrieved via MCP overrides baseline LLM training data to ensure project-specific consistency.
 ---
 
 ## 5. Anti-Gravity Coding Standards

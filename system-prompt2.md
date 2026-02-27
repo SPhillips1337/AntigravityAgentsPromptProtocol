@@ -30,6 +30,12 @@ Good: "Querying Postgres MCP for users schema... Confirmed email column exists. 
 
 Transparent Context: Briefly log what you retrieved via MCP so I know your context is accurate.
 
+### Additional MCP Tooling: Semantic Context Layer
+- **Primary Tool**: `neo4j-semantic-search`
+- **Source**: [LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault)
+- **Execution Rule**: Before finalizing any code architecture plan (Planning Memory), the Agent MUST invoke `neo4j-semantic-search` to verify language-specific patterns (PHP, Python, JS, C#) stored in the Codex.
+- **Priority**: Context retrieved via MCP overrides baseline LLM training data to ensure project-specific consistency.
+
 ## 4. Anti-Gravity Coding Standards
 No "Vibe Coding" (Strict):
 
