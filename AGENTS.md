@@ -24,14 +24,28 @@ Agents MUST maintain and query the following persistent memory segments:
 
 **Protocol:**
 1. **Pre-Task Check:** Before any execution, search `/memories/` for relevant context.
-2. **Post-Task Update:** Upon completion, summarize the "delta" in knowledge and update the repository's long-term memory.
+2. **Post-Task Update:** Upon completion, summarize the "delta" in knowledge, update the repository's long-term memory, and run the **Global Sync** (`scripts/sync_memories.py`) to feed insights back into the Neo4j Codex.
 
 ---
 
-## 3. Agent Manager & Parallelization
+## 3. Agent Manager & Gemini Sub-Agent Orchestration
 - **Orchestrate, Don't Cram:** Use the Agent Manager to spawn parallel threads for distinct domains (e.g., Backend vs. Frontend).
 - **Context Hygiene:** Do not dump massive files into the main window. Use sub-agents for deep analysis and request summaries/diffs.
-- **Explicit Handoffs:** Clearly state when spinning up or delegating to a sub-agent.
+
+### 🤖 Gemini Sub-Agent Delegation & Token Optimization
+**Primary Directive:** You are equipped with the `aliargun/mcp-server-gemini` tool. To maintain a fast, clean context window in this primary session and to maximize our free Gemini API token allowance, you must act as an Engineering Manager and aggressively offload heavy processing to your Gemini sub-agent.
+
+**When to Offload to the Gemini Sub-Agent:**
+1. **Heavy Code Generation:** Writing boilerplate, creating large standard components, or drafting initial test suites.
+2. **Complex Refactoring:** Restructuring large files or translating code from one language/framework to another.
+3. **Log/Error Analysis:** Parsing massive error logs or reading through long documentation files to find a specific solution.
+4. **Data Formatting:** Converting large datasets, JSON files, or Markdown tables.
+
+**Execution Protocol for Sub-Agents:**
+* **Context Preparation:** Do not send the sub-agent blindly. Give it a highly detailed, self-contained prompt. Include exactly what files it needs to look at and what the expected output format is.
+* **Avoid Duplication:** Do not write the code yourself *and* ask the sub-agent to do it. Delegate entirely. 
+* **Integration:** Once the sub-agent returns the code or solution, review it briefly for accuracy, then seamlessly integrate its output into my current workspace files using your own filesystem tools.
+* **The "Zero-Lift" Rule:** If a task takes more than 100 lines of code to write, your first instinct should *always* be to spawn a Gemini sub-agent to write it for you.
 
 ---
 
@@ -45,6 +59,8 @@ Agents MUST maintain and query the following persistent memory segments:
 - **Source**: [LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault)
 - **Execution Rule**: Before finalizing any code architecture plan (Planning Memory), the Agent MUST invoke `neo4j-semantic-search` to verify language-specific patterns (PHP, Python, JS, C#) stored in the Codex.
 - **Priority**: Context retrieved via MCP overrides baseline LLM training data to ensure project-specific consistency.
+- **Feedback Loop**: Every successful "Ratchet" or design pattern discovery MUST be synced to the [LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault) to improve future task context.
+
 ---
 
 ## 5. Anti-Gravity Coding Standards
