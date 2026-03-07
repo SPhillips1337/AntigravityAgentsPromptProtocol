@@ -20,11 +20,13 @@ Inspired by Langchain Deep Agents, our memory is split between ephemeral context
 Agents MUST maintain and query the following persistent memory segments:
 - **`codebase_insights/`**: High-level summaries of complex modules, hidden logic, and "why" behind counter-intuitive code.
 - **`architectural_decisions/`**: Logs of major design choices, technology tradeoffs, and future-proofing strategies.
+- **`history/`**: Permanent archive of all `implementation_plan.md` and `walkthrough.md` files.
 - **`patterns_and_lessons.md`**: Success logs and "Never Again" failure post-mortems.
 
 **Protocol:**
 1. **Pre-Task Check:** Before any execution, search `/memories/` for relevant context.
-2. **Post-Task Update:** Upon completion, summarize the "delta" in knowledge, update the repository's long-term memory, and run the **Global Sync** (`scripts/sync_memories.py`) to feed insights back into the Neo4j Codex.
+2. **Post-Task Update:** Upon completion, summarize the "delta" in knowledge and update the repository's LTM.
+3. **Artifact Archiving:** All finalized `implementation_plan.md` and `walkthrough.md` files MUST be moved to `.antigravity/memories/history/[implementation_plans|walkthroughs]/` and prefixed with a `YYYYMMDD_HHMMSS_` timestamp to ensure chronological traceability.
 
 ---
 
@@ -59,7 +61,6 @@ Agents MUST maintain and query the following persistent memory segments:
 - **Source**: [LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault)
 - **Execution Rule**: Before finalizing any code architecture plan (Planning Memory), the Agent MUST invoke `neo4j-semantic-search` to verify language-specific patterns (PHP, Python, JS, C#) stored in the Codex.
 - **Priority**: Context retrieved via MCP overrides baseline LLM training data to ensure project-specific consistency.
-- **Feedback Loop**: Every successful "Ratchet" or design pattern discovery MUST be synced to the [LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault) to improve future task context.
 
 ---
 
