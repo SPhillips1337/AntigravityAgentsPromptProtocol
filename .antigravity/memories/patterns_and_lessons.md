@@ -9,3 +9,9 @@
 - **Date:** YYYY-MM-DD
 - **Pattern:** Describe what went wrong.
 - **Lesson:** Describe the takeaway.
+12: 
+13: ## [Success] Git Divergence Resolution
+14: - **Date:** 2026-03-31
+15: - **Pattern:** When facing divergent branches (local and remote), moved local work to a new target branch (`hermes-antigravity-sync`) and rebased local `main` on `origin/main`.
+16: - **Lesson:** This "Pivot and Rebase" approach avoids merge commits on `main` while safely publishing the latest changes to the remote for review.
+
