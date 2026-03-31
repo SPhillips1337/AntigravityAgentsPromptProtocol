@@ -1,6 +1,6 @@
 ---
 name: code-review-ai-ai-review
-description: "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C"
+description: "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, Claude 4.5 Sonnet) with battle-tested platforms to identify bugs, vulnerabilities, and performance issues."
 ---
 
 # AI-Powered Code Review Specialist
@@ -353,22 +353,38 @@ class ReviewIssue:
     category: str; title: str; description: str
     code_example: str = ""; auto_fixable: bool = False
 
+    def to_github_comment(self) -> Dict[str, Any]:
+        return {
+            "path": self.file_path,
+            "line": self.line,
+            "body": f"**[{self.severity}] {self.category}**: {self.title}\n{self.description}\n\n```python\n{self.code_example}\n```"
+        }
+
 class CodeReviewOrchestrator:
     def __init__(self, pr_number: int, repo: str):
         self.pr_number = pr_number; self.repo = repo
-        self.github_token = os.environ['GITHUB_TOKEN']
-        self.anthropic_client = Anthropic(api_key=os.environ['ANTHROPIC_API_KEY'])
+        self.github_token = os.environ.get('GITHUB_TOKEN')
+        anthropic_key = os.environ.get('ANTHROPIC_API_KEY')
+        if not self.github_token or not anthropic_key:
+            raise ValueError("Environment variables GITHUB_TOKEN and ANTHROPIC_API_KEY must be set")
+        self.anthropic_client = Anthropic(api_key=anthropic_key)
         self.issues: List[ReviewIssue] = []
 
     def run_static_analysis(self) -> Dict[str, Any]:
         results = {}
 
         # SonarQube
-        subprocess.run(['sonar-scanner', f'-Dsonar.projectKey={self.repo}'], check=True)
+        try:
+            subprocess.run(['sonar-scanner', f'-Dsonar.projectKey={self.repo}'], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"SonarQube failed: {e}")
 
         # Semgrep
-        semgrep_output = subprocess.check_output(['semgrep', 'scan', '--config=auto', '--json'])
-        results['semgrep'] = json.loads(semgrep_output)
+        try:
+            semgrep_output = subprocess.check_output(['semgrep', 'scan', '--config=auto', '--json'], stderr=subprocess.STDOUT)
+            results['semgrep'] = json.loads(semgrep_output)
+        except (subprocess.CalledProcessError, json.JSONDecodeError) as e:
+            print(f"Semgrep failed or parsing error: {e}")
 
         return results
 
@@ -398,7 +414,23 @@ Return JSON array:
         if '```json' in content:
             content = content.split('```json')[1].split('```')[0]
 
-        return [ReviewIssue(**issue) for issue in json.loads(content.strip())]
+        try:
+            parsed = json.loads(content.strip())
+            return [ReviewIssue(**issue) for issue in parsed]
+        except json.JSONDecodeError as e:
+            print(f"JSON Parsing failed: {e}\\nRaw output: {content}")
+            return []
+
+    def get_pr_diff(self) -> str:
+        try:
+            import urllib.request
+            req = urllib.request.Request(f"https://api.github.com/repos/{self.repo}/pulls/{self.pr_number}", 
+                                         headers={"Authorization": f"Bearer {self.github_token}", "Accept": "application/vnd.github.v3.diff"})
+            with urllib.request.urlopen(req) as resp:
+                return resp.read().decode('utf-8')
+        except Exception as e:
+            print(f"Failed to get diff: {e}")
+            return "Sample diff content"
 
     def post_review_comments(self, issues: List[ReviewIssue]):
         summary = "## 🤖 AI Code Review\n\n"

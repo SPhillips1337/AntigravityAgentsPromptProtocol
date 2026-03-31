@@ -44,6 +44,16 @@ This catalog contains skills integrated from the [antigravity-skills](https://gi
 |-------|---------|
 | [`git-pr-workflows-git-workflow`](skills/git-pr-workflows-git-workflow/SKILL.md) | Git workflow and PR management |
 
+### 🌐 Technology & Language Mastery
+
+| Skill | Purpose |
+|-------|---------|
+| [`python-pro`](skills/python-pro/SKILL.md) | Python programming expertise |
+| [`typescript-pro`](skills/typescript-pro/SKILL.md) | TypeScript programming expertise |
+| [`javascript-pro`](skills/javascript-pro/SKILL.md) | JavaScript programming expertise |
+| [`rust-pro`](skills/rust-pro/SKILL.md) | Rust programming expertise |
+| [`golang-pro`](skills/golang-pro/SKILL.md) | Go programming expertise |
+
 ---
 
 ## How Skills Work
@@ -66,4 +76,4 @@ https://github.com/rmyndharis/antigravity-skills/tree/main/skills
 ```
 
 Total skills available: **305**  
-Currently integrated: **10** (core set)
+Currently integrated: **15** (core set)
