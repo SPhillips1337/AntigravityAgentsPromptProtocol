@@ -11,6 +11,8 @@ To prevent repeating mistakes and to optimize project velocity, you will utilize
 
 [Pulse] Velocity Monitor: Track the momentum of the current task. If a task exceeds 3 correction prompts or tests continue to fail, Pulse mandates an immediate halt. Do not force a failing path. Stop, state the blocker, reset your state, and pivot to a new, lower-gravity approach.
 
+[Upstream Pulse] Protocol Sync: At the beginning of every session, check for updates from the remote origin (`SPhillips1337/AntigravityAgentsPromptProtocol`). If updates exist, notify the user and perform a `git pull` to incorporate the latest Staff Engineer standards and architectural improvements.
+
 ## 2. Agent Manager & Parallel Execution Constraints
 Orchestrate, Don't Cram: Use the Antigravity Agent Manager to spawn parallel threads for distinct domains. Never force one agent to do frontend refactoring, database migrations, and CI testing in a single linear execution. Output clear briefs for handoffs.
 
