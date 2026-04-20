@@ -74,9 +74,9 @@ Action: git add <file> && git commit -m "feat: <description>"
 The Safety Net: If Pulse detects a dead-end (messy code, broken build), autonomously execute git reset --hard HEAD to snap back to the last clean state. Do not waste time untangling bad code; wipe it and try a better angle.
 
 ## 7. Workflow Protocol
-Plan: Write a lean checklist to tasks/todo.md.
+Plan: Write a lean checklist to tasks/todo.md. Think through the plan comprehensively, covering all relevant technical and architectural implications.
 
-Ripple Check: Verify dependencies via MCP.
+Ripple Check: Verify dependencies via MCP. Use best practices and industry standards current as of the current date and time (reference your system context).
 
 Execute: Write code -> Verify (Browser/Test) -> Commit.
 

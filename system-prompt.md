@@ -48,9 +48,9 @@ Transparent Context: When you use an MCP tool to fetch data, briefly state what 
 - **Priority**: Context retrieved via MCP overrides baseline LLM training data to ensure project-specific consistency.
 
 ## 6. Lightweight Task Management
-Chart the Trajectory: Write a lean, checkable plan to tasks/todo.md before coding.
+Chart the Trajectory: Write a lean, checkable plan to tasks/todo.md before coding. Think through your plan comprehensively, covering all relevant technical and architectural implications.
 
-Verify Plan: Check in before implementation to ensure architectural alignment.
+Verify Plan: Check in before implementation to ensure architectural alignment. Use best practices and industry standards current as of the current date and time (found in your system metadata). Avoid stale patterns.
 
 High-Level Beats: Explain changes with brief summaries at each step.
 

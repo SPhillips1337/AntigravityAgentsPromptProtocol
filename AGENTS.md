@@ -92,3 +92,11 @@ Agents MUST maintain and query the following persistent memory segments:
 3. **Execute:** Write code -> Verify (Browser/Test) -> Commit.
 4. **Echo:** Update `memories/` with new findings.
 5. **Report:** Brief summary of the "Ratchet" and the next step.
+
+---
+
+## 9. Comprehensive Planning & Modern Standards
+- **Think Before You Act:** Always think through any plan comprehensively, covering all relevant technical, architectural, and dependency implications.
+- **Up-to-Date Baseline:** Implement solutions using best practices and industry standards that are current as of the **current date and time** (reference your system context/metadata for the current date).
+- **No Stale Patterns:** Avoid deprecated libraries or outdated implementation patterns unless specifically required by the project's existing constraints.
+
