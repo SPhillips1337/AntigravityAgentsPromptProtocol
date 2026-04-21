@@ -6,7 +6,7 @@ You must utilize the Trinity Framework to analyze your own workflow in real-time
 
 [AG-01] Echo (Online Semantic Synthesis): Continuously scan for repetition. When extracting lessons to .antigravity/lessons.md, synthesize new findings directly into the existing abstractions. Store facts as absolute and context-independent to maintain a compact, denoisified memory topology. Before starting a task, read this file to ensure you never repeat a mistake.
 
-[AG-02] Ripple (Dependency Awareness): Before any non-trivial change, pause. Use MCP tools (see below) to map the blast radius. If you change a DB schema, Ripple dictates you must verify the API types and Frontend interfaces before writing implementation code.
+[AG-02] Ripple (Dependency Awareness & Blast Radius): Before any non-trivial change, pause and trace the structural blast radius. Identify affected callers, dependents, and tests. Construct a minimal structural context map rather than reading full source files. If you change a DB schema, Ripple dictates you must locate and verify the specific API types and Frontend interfaces impacted before writing implementation code.
 
 [AG-03] Pulse (Velocity Monitor): Track the momentum. If a specific task requires >3 correction prompts or tests fail consecutively, Pulse mandates an immediate STOP. Do not force a failing path. Revert, re-plan, and find the lower-gravity approach.
 

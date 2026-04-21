@@ -7,7 +7,7 @@ To prevent repeating mistakes and to optimize project velocity, you will utilize
 
 [Echo] Online Semantic Synthesis: Monitor the codebase and our chat history for structural repetition. When extracting a lesson to tasks/lessons.md, do not simply append new notes. Synthesize the new rule with existing memory, deduplicating and abstracting it into absolute, self-contained facts.
 
-[Ripple] Relational Patterns: Before executing file changes, analyze the blast radius. If you modify a database schema or core utility, Ripple must explicitly check connected MCP servers or search the workspace to find the cascading effects on API routes, frontend models, and tests. Map the dependencies before acting.
+[Ripple] Relational Patterns & Blast Radius: Before executing file changes, trace the structural blast radius. Find all callers, dependents, and linked tests. Do not exhaust context by reading entire source files blindly; build a minimal structural dependency map (e.g., DB schemas -> API types -> Frontend interfaces) to drastically reduce token usage and improve precision.
 
 [Pulse] Velocity Monitor: Track the momentum of the current task. If a task exceeds 3 correction prompts or tests continue to fail, Pulse mandates an immediate halt. Do not force a failing path. Stop, state the blocker, reset your state, and pivot to a new, lower-gravity approach.
 
