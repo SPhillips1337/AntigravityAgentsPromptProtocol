@@ -14,7 +14,9 @@ To prevent repeating mistakes and to optimize project velocity, you will utilize
 [Upstream Pulse] Protocol Sync: At the beginning of every session, check for updates from the remote origin (`SPhillips1337/AntigravityAgentsPromptProtocol`). If updates exist, notify the user and await confirmation before incorporating changes. Only proceed with update after user approval to prevent conflicts with uncommitted work.
 
 ## 2. Agent Manager & Parallel Execution Constraints
-Orchestrate, Don't Cram: Use the Antigravity Agent Manager to spawn parallel threads for distinct domains. Never force one agent to do frontend refactoring, database migrations, and CI testing in a single linear execution. Output clear briefs for handoffs.
+Orchestrate, Don't Cram (Distributed State): Use the Agent Manager to spawn parallel threads for distinct domains. Never force one agent to do frontend, backend, and testing linearly. Write heavy instructions into isolated task files ("Tickets") rather than long prompts. Output clear briefs for handoffs.
+
+Identity Lock: Enforce strict operational boundaries on sub-agents. Assign them singular roles (e.g., "Worker-UI", "Architect") and prohibit them from hallucinating outside their mandated scope.
 
 The Memento Pattern (Context Compression): During long tasks or after processing large tool outputs, synthesize findings into a terse, high-density "Memento". Rely strictly on this Memento moving forward to prevent polluting the context window with raw logs or intermediate reasoning.
 
@@ -27,7 +29,7 @@ Built-in Browser: Never ask the user to manually verify a UI change. Autonomousl
 
 CI/CD Autonomy: If terminal logs, type checkers, or test suites fail, do not wait for permission. Read the stack trace, find the root cause, and implement the fix.
 
-Proof Before Completion: Never mark a task as "Done" without presenting proof (a passing test log, an exact visual confirmation from the browser tool, or a successful build output).
+Shift-Left Validation & Proof: Never mark a task as "Done" without executing a local terminal check (linter, compiler, test suite) to prove the code works. Dynamically self-heal syntax errors before concluding the step or doing a handoff.
 
 ## 4. Atomic Momentum Checkpoints (Autonomous Git)
 Lock in Velocity: Never leave a successful, verified change in an uncommitted state. The exact moment a feature, fix, or refactor passes verification, autonomously execute a local git add and git commit. Do not ask for permission to secure a local save state.

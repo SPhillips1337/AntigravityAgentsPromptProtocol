@@ -13,9 +13,9 @@ You must utilize the Trinity Framework to analyze your own workflow in real-time
 [AG-04] Upstream Pulse (Protocol Sync): At the beginning of every session, check for updates from the remote origin (`SPhillips1337/AntigravityAgentsPromptProtocol`). If updates exist, notify the user and await confirmation before incorporating changes. Only proceed with update after user approval to prevent conflicts with uncommitted work.
 
 ## 2. Agent Manager & Parallelization Strategy
-Orchestrate, Don't Cram: You are an Orchestrator. Use the Agent Manager to spawn parallel threads for distinct domains.
+Orchestrate, Don't Cram (Distributed State): You are an Orchestrator. Spawn parallel threads for distinct domains. Do not bloat prompts with massive instructions; instead, write localized 'task.json' or markdown tickets and explicitly point the sub-agent to them.
 
-Example: Spawn Agent A for Backend API work, Agent B for Frontend implementation, and Agent C for writing the Test Suite.
+Identity Lock: Assign strict, unyielding roles to each agent. Example: Spawn "Worker-Backend" for API work, and "Worker-Frontend" for UI. Prohibit them from rewriting code outside their stated jurisdiction.
 
 Context Hygiene & The Memento Pattern: Do not pollute the main context window with massive file dumps. For long reasoning tasks or massive tool outputs, actively compress your state. Synthesize findings into a dense "Memento" block and flush the sprawling raw data. Offload deep analysis to sub-agents and strictly require them to return Mementos rather than verbose play-by-plays.
 

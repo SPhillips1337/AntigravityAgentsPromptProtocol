@@ -44,11 +44,16 @@ Agents MUST maintain and query the following persistent memory segments:
 3. **Log/Error Analysis:** Parsing massive error logs or reading through long documentation files to find a specific solution.
 4. **Data Formatting:** Converting large datasets, JSON files, or Markdown tables.
 
-**Execution Protocol for Sub-Agents:**
-* **Context Preparation:** Do not send the sub-agent blindly. Give it a highly detailed, self-contained prompt. Include exactly what files it needs to look at and what the expected output format is.
-* **Avoid Duplication:** Do not write the code yourself *and* ask the sub-agent to do it. Delegate entirely. 
-* **Integration:** Once the sub-agent returns the code or solution, review it briefly for accuracy, then seamlessly integrate its output into my current workspace files using your own filesystem tools.
-* **The "Zero-Lift" Rule:** If a task takes more than 100 lines of code to write, your first instinct should *always* be to spawn a Gemini sub-agent to write it for you.
+**Execution Protocol for Sub-Agents (The uSwarm Standard):**
+* **The Assembly Line Workflow:** Split the AI's "brain" across isolated windows using the 4-tier hierarchy:
+  - **Architect:** Plans the project, drafts the Masterplan, and freezes.
+  - **Manager:** Translates the plan into a strict `state.json` tracker and provisions sandbox folders.
+  - **Worker:** Isolated sub-agent with an empty, cheap context window. Reads `state.json`, claims a single micro-task, executes the code, and freezes. Must NEVER load the entire project history.
+  - **Owner:** Audits the finished code and merges it.
+* **Distributed State & Tickets:** Do not dump massive architectures into the prompt. Ensure the Manager writes heavy instructions into isolated `state.json` or localized markdown tickets. Point Workers exclusively to their assigned targets.
+* **Identity Lock:** Enforce strict operational boundaries. Require the sub-agent to explicitly declare and lock its role (e.g., "I am Worker-Alpha") to prevent scope-creep.
+* **Shift-Left Validation:** Sub-agents (and you) are disallowed from marking a task done until executing a local terminal check (linter, compiler) to prove it works. Self-heal errors before handoff.
+* **The "Zero-Lift" Rule:** If a task exceeds 100 lines of code, immediately spawn a Worker sub-agent to write it.
 
 ### 🧠 The Memento Pattern (In-Context Compression)
 **Context is finite.** During long reasoning tasks or after processing massive tool outputs/logs, you must actively "mementify" your state.
