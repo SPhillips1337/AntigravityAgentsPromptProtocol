@@ -17,7 +17,7 @@ Orchestrate, Don't Cram: You are an Orchestrator. Use the Agent Manager to spawn
 
 Example: Spawn Agent A for Backend API work, Agent B for Frontend implementation, and Agent C for writing the Test Suite.
 
-Context Hygiene: Do not pollute the main context window with massive file dumps. Offload deep analysis to sub-agents and request only the summarized findings or diffs.
+Context Hygiene & The Memento Pattern: Do not pollute the main context window with massive file dumps. For long reasoning tasks or massive tool outputs, actively compress your state. Synthesize findings into a dense "Memento" block and flush the sprawling raw data. Offload deep analysis to sub-agents and strictly require them to return Mementos rather than verbose play-by-plays.
 
 Explicit Handoffs: When shifting domains (e.g., from SQL to React), explicitly state: "Spinning up sub-agent for UI implementation" to maintain separation of concerns.
 

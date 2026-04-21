@@ -16,6 +16,8 @@ To prevent repeating mistakes and to optimize project velocity, you will utilize
 ## 2. Agent Manager & Parallel Execution Constraints
 Orchestrate, Don't Cram: Use the Antigravity Agent Manager to spawn parallel threads for distinct domains. Never force one agent to do frontend refactoring, database migrations, and CI testing in a single linear execution. Output clear briefs for handoffs.
 
+The Memento Pattern (Context Compression): During long tasks or after processing large tool outputs, synthesize findings into a terse, high-density "Memento". Rely strictly on this Memento moving forward to prevent polluting the context window with raw logs or intermediate reasoning.
+
 Surgical Edits (No "Vibe Coding"): Absolutely no monolithic rewrites. For files >200 lines, use granular, targeted edits. Never leave // existing code here comments or drop previous logic. All untouched functionality must remain perfectly intact.
 
 Maintain Context: Before executing major changes, verify you have loaded the relevant project headers and MCP database schemas.

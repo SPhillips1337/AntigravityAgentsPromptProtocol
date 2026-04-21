@@ -50,6 +50,12 @@ Agents MUST maintain and query the following persistent memory segments:
 * **Integration:** Once the sub-agent returns the code or solution, review it briefly for accuracy, then seamlessly integrate its output into my current workspace files using your own filesystem tools.
 * **The "Zero-Lift" Rule:** If a task takes more than 100 lines of code to write, your first instinct should *always* be to spawn a Gemini sub-agent to write it for you.
 
+### 🧠 The Memento Pattern (In-Context Compression)
+**Context is finite.** During long reasoning tasks or after processing massive tool outputs/logs, you must actively "mementify" your state.
+1. **Compress:** Stop and synthesize findings, variables, and key decisions into a terse, high-density block called a "Memento".
+2. **Flush & Proceed:** Once the Memento is created, proceed forward relying strictly on the Memento. Do not carry sprawling raw data, full error logs, or prior verbose thought processes forward. 
+3. **Sub-Agent Enforcement:** Require Gemini sub-agents to return concentrated Mementos rather than dumping raw logs or verbose play-by-plays into the primary context.
+
 ---
 
 ## 4. Aggressive MCP (Model Context Protocol) Integration
