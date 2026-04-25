@@ -54,6 +54,25 @@ To apply the Anti‑Gravity protocol globally:
 
 Now every new Antigravity session will enforce these autonomous Git actions, ensuring momentum is never lost.
 
+## 🌟 Credits & Prior Art
+
+The Anti-Gravity Protocol is built upon the collective intelligence of the AI engineering community. We owe our high-velocity patterns to the following pioneers:
+
+- **[IJFW (It Just F*cking Works)](https://github.com/TheRealSeanDonahoe/ijfw)**: Created by [Sean Donahoe](https://github.com/TheRealSeanDonahoe). We integrated the **Donahoe Loop** (Quick/Deep workflows), **Output Discipline**, and the **Trident Audit** architecture to reduce token burn and eliminate conversational friction.
+- **[OctaMem](https://octamem.com)**: For the persistent intelligence model that powers our Semantic, Episodic, and Procedural memory architecture.
+- **[uSwarm](https://github.com/SPhillips1337/uSwarm)**: For the **Architect/Manager/Worker/Owner** assembly line orchestration model and Identity Lock mechanisms.
+- **[LLM-Codex-Reference-Vault](https://github.com/SPhillips1337/LLM-Codex-Reference-Vault)**: For the Neo4j-backed semantic context layer that provides ground-truth patterns for cross-language development.
+- **[Langchain Deep Agents](https://github.com/langchain-ai/langchain)**: For foundational concepts in context-enrichment and autonomous planning.
+- **[40MCP](https://github.com/SPhillips1337/40mcp)**: For proxy-based tool discovery and dynamic MCP server orchestration.
+- **[Claude Code](https://github.com/anthropics/claude-code)**: For inspiring high-velocity interaction patterns and the "Ratchet" momentum system.
+
+## 🛠 Modern Standards & Planning
+
+Anti-Gravity enforces a "Think Before You Act" philosophy:
+- **Comprehensive Planning:** Every task begins with a checklist covering technical, architectural, and dependency implications.
+- **Up-to-Date Baseline:** Solutions are implemented using industry best practices current as of the session date.
+- **Zero-Stale Patterns:** Agents are prohibited from using deprecated libraries or outdated implementation patterns.
+
 ---
 
 *Maximize Momentum. Minimize Gravity.*

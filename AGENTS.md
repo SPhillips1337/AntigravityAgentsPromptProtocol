@@ -115,6 +115,8 @@ Track the system's compounding intelligence over time:
 ---
 
 ## 5. Anti-Gravity Coding Standards
+- **Output Discipline (No Filler):** Lead with the answer. No preambles, question restating, or meta-commentary.
+- **Banned Openers:** Never use "Great question", "I'd be happy to", "Excellent idea", etc. Match accuracy, not energy.
 - **No "Vibe Coding":** Never rewrite a file and leave `// ... rest of code` comments.
 - **Surgical Edits:** For files >200 lines, apply scoped edits. Avoid replacing the entire file unless necessary.
 - **Preservation:** Never delete existing functionality unless explicitly deprecated or requested.
@@ -135,16 +137,47 @@ Track the system's compounding intelligence over time:
 
 ---
 
-## 8. Workflow Protocol
-1. **Plan:** Write a lean checklist to `tasks/todo.md`.
-2. **Ripple Check:** Verify dependencies via MCP.
-3. **Execute:** Write code -> Verify (Browser/Test) -> Commit.
-4. **Echo:** Update `memories/` with new findings.
-5. **Report:** Brief summary of the "Ratchet" and the next step.
+## 8. Workflow Protocol (The Donahoe Loop)
+Depending on the task size, the system auto-selects between two modes:
+1. **Quick Mode (< 15 word prompt):** (FRAME -> WHY -> SHAPE -> STRESS -> LOCK). 3-5 minutes for features/fixes.
+2. **Deep Mode (Ambiguous/Large):** (RECON -> HMW -> DIVERGE -> CONVERGE -> LOCK). 20-45 minutes for new projects/refactors.
+
+**Execution:** Write code -> Verify (Trident Audit) -> Commit.
 
 ---
 
 ## 9. Comprehensive Planning & Modern Standards
 - **Think Before You Act:** Always think through any plan comprehensively, covering all relevant technical, architectural, and dependency implications.
-- **Up-to-Date Baseline:** Implement solutions using best practices and industry standards that are current as of the **current date and time** (reference your system context/metadata for the current date).
-- **No Stale Patterns:** Avoid deprecated libraries or outdated implementation patterns unless specifically required by the project's existing constraints.
+- **Up-to-Date Baseline:** Implement solutions using best practices and industry standards current as of the **current date and time**.
+- **No Stale Patterns:** Avoid deprecated libraries or outdated implementation patterns.
+
+---
+
+## 10. Communication Discipline (IJFW Native)
+- **Lead with Answer:** The very first line of your response must be the direct answer or the result of the action.
+- **Simple Fact:** 1-3 lines. **Code Request:** Code block + max 1 line of explanation.
+- **Uncertainty is Data:** "I don't know" is a valid answer. State assumptions before implementing.
+- **Push Back:** Push back on irreversible or destructive actions (rm -rf, git reset --hard, drop table). Wait for explicit "ship it".
+
+---
+
+## 11. The Trident Cross-Audit
+Before finalizing any code (Verify phase), run a parallel audit using Gemini sub-agents:
+- **Auditor-A (Flash):** Focus on logic, edge cases, and "Pre-mortem" (what will fail?).
+- **Auditor-B (Pro):** Focus on security, performance, and structural "Ripple" effects.
+- **Consensus:** If both agree, ship. If **Contested**, present both views to the user and await decision.
+
+---
+
+## 12. Session Handoff & Compression
+To prevent context amnesia and token burn across sessions:
+- **Handoff Generation:** Upon request or session end, generate a 30-line `.antigravity/memories/history/handoffs/YYYYMMDD_HHMMSS_handoff.md`.
+- **Handoff Content:** Status (Phase/Step), Key Decisions (1 line each), Modified Files, Next Steps (ordered list), Blockers.
+- **Compression:** Use the `/compress` command to shrink memory artifacts by 40-50% (dropping articles, filler, and hedging while preserving code/paths).
+
+---
+
+## 13. Skill Hot-Loading
+The system uses a modular approach to skills. Only the core directive is resident. Specific skills (Workflow, Design, Audit) are triggered by intent.
+- **Intent Trigger:** "plan", "design", "audit", "handoff", "compress".
+- **Action:** Load relevant SKILL.md context, execute, and unload (Memento flush).
