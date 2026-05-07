@@ -12,11 +12,16 @@ Agents operating under this protocol act as **autonomous Staff Software Engineer
 
 ## 🛠 Trinity Orchestration (Self-Evolution)
 
-The system utilizes three specialized analytical lenses to optimize project velocity:
+The system utilizes four specialized analytical lenses to optimize project velocity:
 
 - **[Echo] Structural Memory:** Detects patterns and extracts lessons to `.antigravity/memories/patterns_and_lessons.md`.
 - **[Ripple] Relational Patterns:** Analyzes the "blast radius" of changes across dependencies (DB -> API -> Frontend).
 - **[Pulse] Velocity Monitor:** Halts failing paths, resets state, and pivots to lower-gravity approaches if momentum stalls.
+- **[Sanity] Grounding Check:** Ensures every action is grounded in `README.md` and `AGENTS.md` before execution.
+
+## 🛡 Risk Mitigation & Pre-Mortem
+
+The Anti-Gravity Protocol incorporates a mandatory **Pre-Flight Pre-Mortem** for all major changes. This forces the agent to assume failure and work backward to identify blind spots, hidden assumptions, and tripwires before a single line of code is written.
 
 ## 📂 Project Structure
 
