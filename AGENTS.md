@@ -100,6 +100,12 @@ confidence: high | medium | low
 - **Execution Rule**: Before finalizing any code architecture plan (Planning Memory), the Agent MUST invoke `neo4j-semantic-search` to verify language-specific patterns (PHP, Python, JS, C#) stored in the Codex.
 - **Priority**: Context retrieved via MCP overrides baseline LLM training data to ensure project-specific consistency.
 
+### Port Conflict Prevention via Launcher Registry
+- **Context**: The Launcher Project Registry (MCP tools: `launcher_list_projects`, `launcher_get_used_ports`, `launcher_find_free_port_tool`) tracks all development projects and their assigned ports.
+- **Rule**: When creating, scaffolding, or configuring any project that binds to a network port, the agent MUST query `launcher_get_used_ports` and/or `launcher_find_projects_by_service` **before** assigning a port number.
+- **Conflict Resolution**: If a candidate port is already in use by another project (via `launcher_get_used_ports`) or already assigned in the registry, select a different port or use `launcher_find_free_port_tool` to find an available one in the 9000–9999 range.
+- **Registration**: After assigning a port to a new project, register the project in the launcher registry using the `launcher_register_project` MCP tool so future agents can see the assignment.
+
 ---
 
 ## 5. Anti-Gravity Coding Standards
