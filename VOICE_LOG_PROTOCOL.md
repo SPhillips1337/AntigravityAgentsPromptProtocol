@@ -7,7 +7,7 @@ The Voice Log Protocol ensures that all autonomous actions, task completions, an
 Every significant milestone in a task MUST be logged to the centralized voice reports directory. This allows the user to stay informed of the agent's progress and decisions without needing to monitor the terminal or files manually.
 
 ## 🛠 Logging Mechanism
-1. **Target Directory**: `/home/stephen/antigravity_reports/`
+1. **Target Directory**: `/tmp/antigravity_reports/`
 2. **Frequency**: 
    - Upon completion of a major task.
    - Upon generation of any audit report (Vibes, Security, etc.).

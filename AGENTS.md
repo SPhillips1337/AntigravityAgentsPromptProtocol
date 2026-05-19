@@ -25,7 +25,7 @@ All memory is classified into three types. This taxonomy governs how memories ar
 
 | Type | What It Stores | Maps To |
 |---|---|---|
-| **Semantic** | Facts, constraints, truths, identity | `codebase_insights/`, `architectural_decisions/` |
+| **Semantic** | Facts, constraints, truths, identity | `codebase_insights/`, `architectural_decisions/`, `DESIGN.md` |
 | **Episodic** | Events, decisions, outcomes, timelines | `history/` |
 | **Procedural** | Workflows, patterns, guardrails, lessons | `patterns_and_lessons.md` |
 
@@ -33,6 +33,7 @@ All memory is classified into three types. This taxonomy governs how memories ar
 Agents MUST maintain and query the following persistent memory segments:
 - **`codebase_insights/`**: High-level summaries of complex modules, hidden logic, and "why" behind counter-intuitive code. *(Semantic)*
 - **`architectural_decisions/`**: Logs of major design choices, technology tradeoffs, and future-proofing strategies. *(Semantic)*
+- **`DESIGN.md`**: The visual system contract containing YAML design tokens (colors, typography, shapes) and Markdown design guidelines, ensuring visual consistency across all UI components and Stitch design system integration. *(Semantic)*
 - **`history/`**: Permanent archive of all `implementation_plan.md` and `walkthrough.md` files. *(Episodic)*
 - **`patterns_and_lessons.md`**: Success logs and "Never Again" failure post-mortems. *(Procedural)*
 
@@ -54,6 +55,7 @@ confidence: high | medium | low
 2. **Post-Task Synthesis:** Upon completion, update the LTM. Consolidate related fragments. Update abstract representations rather than appending redundant logs. Stored units must be highly compressed and context-independent.
 3. **Memory Reconciliation:** Every 10 major synthesis cycles, perform a "Truth Audit". Compare LTM entries against the *current* source code. If the code has evolved beyond the memory, update or prune the memory immediately to prevent "Semantic Drift."
 4. **Artifact Archiving:** All finalized `implementation_plan.md` and `walkthrough.md` files MUST be moved to `.antigravity/memories/history/[implementation_plans|walkthroughs]/` and prefixed with a `YYYYMMDD_HHMMSS_` timestamp.
+5. **Design System Sync (Stitch Integration):** If a task involves modifying or designing UI components, the agent MUST read `DESIGN.md` to enforce brand invariants (colors, typography, rounded corners). When the UI theme is updated, the agent MUST update `DESIGN.md` first and synchronize it using `upload_design_md` and `create_design_system_from_design_md` MCP tools to maintain complete visual consistency in the generated screens.
 
 ---
 
@@ -191,7 +193,8 @@ The system uses a modular approach to skills. Only the core directive is residen
 ---
 
 ## 15. Documentation Momentum
-- **Documentation Check:** Every feature or bug fix MUST evaluate if it requires an update to `README.md`, `ARCHITECTURE.md`, or `TROUBLESHOOTING.md`.
+- **Documentation Check:** Every feature or bug fix MUST evaluate if it requires an update to `README.md`, `ARCHITECTURE.md`, `TROUBLESHOOTING.md`, or `DESIGN.md`.
+- **Wiki & Docs Subdirectory:** When starting a new project or major component, verify if a `docs/` subdirectory exists. If missing, create it to house wiki-style articles (e.g., `API.md`, `ARCHITECTURE.md`, `BUILD.md`, `TESTING.md`) as specified in `README-TEMPLATE.md` to ensure deep, structured documentation momentum.
 - **Automatic Sync:** If a fix resolves a recurring issue, update `patterns_and_lessons.md` and `TROUBLESHOOTING.md` immediately.
  
 ---
@@ -203,7 +206,7 @@ To ensure maximum transparency and minimize "Silence Gravity," every agent MUST 
  
 **Mandatory Actions**:
 - **Trigger**: Upon completion of any non-trivial task, generation of an audit (Vibes/Security), or discovery of a critical blocker/pivot.
-- **Log Path**: Generate or append to the centralized voice log directory: `/home/stephen/antigravity_reports/`.
+- **Log Path**: Generate or append to the centralized voice log directory: `/tmp/antigravity_reports/`.
 - **Naming**: `YYYY-MM-DD_HHMM_[Task_Name].md`.
 - **Content**: 
   - **Narrative**: Brief, first-person summary of the action taken (e.g., "I have updated the registry...").

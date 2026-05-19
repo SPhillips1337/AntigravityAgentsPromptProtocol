@@ -93,6 +93,10 @@ Before marking "Done", invoke parallel sub-agents (Flash/Pro) for logic and secu
 
 Plan: Write a lean checklist to tasks/todo.md. Think through the plan comprehensively.
 
+Wiki & Docs: When starting a new project/component, ensure a docs/ subdirectory is created for wiki-style articles (e.g., API.md, ARCHITECTURE.md, BUILD.md, TESTING.md) as per README-TEMPLATE.md.
+
+Design System (DESIGN.md): Maintain a DESIGN.md containing YAML design tokens and Markdown style guidelines in accordance with the Stitch design system specification. Synchronize visual changes using upload_design_md and create_design_system_from_design_md tools.
+
 Execute: Write code -> Verify (Trident Audit) -> Commit.
 
 Handoff: Generate a 30-line handoff.md at session end. Update lessons.md.
